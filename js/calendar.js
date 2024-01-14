@@ -52,7 +52,56 @@ export default class Calendar {
             entry.times.push({ clockIn: currentTime });
         }
     
+        // Update the calendar and the clockDataDisplay
         this.updateCalendar(this.displayedWeekStart);
+
+        // Update the clockDataDisplay for the current date
+        const day = { date: this.formatDateEuropean(date) };
+        const dateClockData = this.clockData.find(data => data.date === day.date);
+        this.updateClockDataDisplay(day, dateClockData);
+    }
+
+    updateClockDataDisplay(day, dateClockData) {
+        // Create a table and populate it with the clock data
+        const clockDataTable = document.createElement('table');
+        const headerRow = document.createElement('tr');
+        ['Clock In', 'Clock Out', 'Status'].forEach(header => {
+            const th = document.createElement('th');
+            th.textContent = header;
+            headerRow.appendChild(th);
+        });
+        clockDataTable.appendChild(headerRow);
+    
+        if (dateClockData) {
+            dateClockData.times.forEach(time => {
+                const timeRow = document.createElement('tr');
+                let status = 'Working';
+                if (time.clockOut) {
+                    const diff = this.calculateTimeDifference(time.clockIn, time.clockOut);
+                    status = this.formatTime(diff);
+                }
+                [time.clockIn, time.clockOut || '', status].forEach(cellData => {
+                    const td = document.createElement('td');
+                    td.textContent = cellData;
+                    timeRow.appendChild(td);
+                });
+                clockDataTable.appendChild(timeRow);
+            });
+        } else {
+            const noDataRow = document.createElement('tr');
+            const noDataCell = document.createElement('td');
+            noDataCell.textContent = 'No data for this date.';
+            noDataCell.colSpan = 3;
+            noDataRow.appendChild(noDataCell);
+            clockDataTable.appendChild(noDataRow);
+        }
+    
+        // Display the clockData under the calendar
+        const clockDataDisplay = document.getElementById('clockDataDisplay');
+        while (clockDataDisplay.firstChild) {
+            clockDataDisplay.removeChild(clockDataDisplay.firstChild);
+        }
+        clockDataDisplay.appendChild(clockDataTable);
     }
 
 
@@ -70,25 +119,53 @@ export default class Calendar {
     weekDays.forEach(day => {
         const row = document.createElement('tr');
 
-        // Add a click event listener to the row
+         // Add a click event listener to the row
         row.addEventListener('click', () => {
             // Retrieve the clockData for this date
             const dateClockData = this.clockData.find(data => data.date === day.date);
-    
-            // Format the clockData into a string
-            let clockDataString = '';
+
+            // Create a table and populate it with the clock data
+            const clockDataTable = document.createElement('table');
+            const headerRow = document.createElement('tr');
+            ['Clock In', 'Clock Out', 'Status'].forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                headerRow.appendChild(th);
+            });
+            clockDataTable.appendChild(headerRow);
+
             if (dateClockData) {
                 dateClockData.times.forEach(time => {
-                    clockDataString += `Clock In: ${time.clockIn}, Clock Out: ${time.clockOut}\n`;
+                    const timeRow = document.createElement('tr');
+                    let status = 'Working';
+                    if (time.clockOut) {
+                        const diff = this.calculateTimeDifference(time.clockIn, time.clockOut);
+                        status = this.formatTime(diff);
+                    }
+                    [time.clockIn, time.clockOut || '', status].forEach(cellData => {
+                        const td = document.createElement('td');
+                        td.textContent = cellData;
+                        timeRow.appendChild(td);
+                    });
+                    clockDataTable.appendChild(timeRow);
                 });
             } else {
-                clockDataString = 'No data for this date.';
+                const noDataRow = document.createElement('tr');
+                const noDataCell = document.createElement('td');
+                noDataCell.textContent = 'No data for this date.';
+                noDataCell.colSpan = 3;
+                noDataRow.appendChild(noDataCell);
+                clockDataTable.appendChild(noDataRow);
             }
 
-    
             // Display the clockData under the calendar
-            document.getElementById('clockDataDisplay').textContent = clockDataString;
+            const clockDataDisplay = document.getElementById('clockDataDisplay');
+            while (clockDataDisplay.firstChild) {
+                clockDataDisplay.removeChild(clockDataDisplay.firstChild);
+            }
+            clockDataDisplay.appendChild(clockDataTable);
         });
+
 
         const dateCell = document.createElement('td');
         const dayNameCell = document.createElement('td');
