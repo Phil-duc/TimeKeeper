@@ -54,6 +54,8 @@ export default class Calendar {
     
         this.updateCalendar(this.displayedWeekStart);
     }
+
+
     generateWeekDays(displayedWeekStart) {
         const weekDays = [];
         for (let i = 0; i < 7; i++) {
@@ -65,32 +67,50 @@ export default class Calendar {
     }
 
     populateCalendarBody(calendarBody, weekDays) {
-        weekDays.forEach(day => {
-            const row = document.createElement('tr');
-            const dateCell = document.createElement('td');
-            const dayNameCell = document.createElement('td');
-            const timeSpentCell = document.createElement('td');
+    weekDays.forEach(day => {
+        const row = document.createElement('tr');
 
-            dateCell.textContent = day.date;
-            dayNameCell.textContent = day.dayName;
-
-            let timeSpent = '';
-            let timeSpentInMinutes = 0;
-
-            const entry = this.clockData.find(entry => entry.date === day.date);
-            if (entry) {
-                timeSpentInMinutes = entry.times.reduce((total, current) => total + this.calculateTimeDifference(current.clockIn, current.clockOut), 0);
+        // Add a click event listener to the row
+        row.addEventListener('click', () => {
+            // Retrieve the clockData for this date
+            const dateClockData = this.clockData.find(data => data.date === day.date);
+    
+            // Format the clockData into a string
+            let clockDataString = '';
+            if (dateClockData) {
+                dateClockData.times.forEach(time => {
+                    clockDataString += `Clock In: ${time.clockIn}, Clock Out: ${time.clockOut}\n`;
+                });
+            } else {
+                clockDataString = 'No data for this date.';
             }
-            timeSpentCell.textContent = this.formatTime(timeSpentInMinutes);
 
-
-
-            row.appendChild(dateCell);
-            row.appendChild(dayNameCell);
-            row.appendChild(timeSpentCell);
-            calendarBody.appendChild(row);
+    
+            // Display the clockData under the calendar
+            document.getElementById('clockDataDisplay').textContent = clockDataString;
         });
-    }
+
+        const dateCell = document.createElement('td');
+        const dayNameCell = document.createElement('td');
+        const timeSpentCell = document.createElement('td');
+
+        dateCell.textContent = day.date;
+        dayNameCell.textContent = day.dayName;
+
+        let timeSpentInMinutes = 0;
+
+        const entry = this.clockData.find(entry => entry.date === day.date);
+        if (entry) {
+            timeSpentInMinutes = entry.times.reduce((total, current) => total + this.calculateTimeDifference(current.clockIn, current.clockOut), 0);
+        }
+        timeSpentCell.textContent = this.formatTime(timeSpentInMinutes);
+
+        row.appendChild(dateCell);
+        row.appendChild(dayNameCell);
+        row.appendChild(timeSpentCell);
+        calendarBody.appendChild(row);
+    });
+}
 
     nextWeek() {
         const nextWeekStart = new Date(this.displayedWeekStart.getTime());
