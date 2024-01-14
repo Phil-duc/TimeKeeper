@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+#clockButton {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    height: 100px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0;
+}
+
+#clockButton:hover {
+    background-color: #0056b3;
+}
+
+
+
+#calendar {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-button {
+    background-color: inherit;
+    font-weight: 1900;
+    color: darkgray;
+    border: none;
+    padding: 10px 5px; /* Adjusted padding */
+    margin: 5px;
+    cursor: pointer;
+    vertical-align: middle; /* Added vertical alignment */
+}
+
+.calendar-button:hover {
+    color: black;
+}
+
+#weekTitle {
+    font-size: 1.5em;
+    margin: 10px 0; /* Adjusted margin */
+    display: inline-block;
+}
+
+#clockTimes {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.week-title-text {
+    display: inline-block;
+}
+
+/* Add styles for the icon */
+.calendar-button i {
+margin-right: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+td {
+    font-size: 14px;
+}
+
