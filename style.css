@@ -132,3 +132,7 @@ td {
 #clockDataDisplay .status {
     color: #007bff;
 }
+
+#spacer {
+    height: 200px;
+}
