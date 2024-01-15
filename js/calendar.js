@@ -59,6 +59,8 @@ export default class Calendar {
         const day = { date: this.formatDateEuropean(date) };
         const dateClockData = this.clockData.find(data => data.date === day.date);
         this.updateClockDataDisplay(day, dateClockData);
+        
+        return this.clockData;
     }
 
     updateClockDataDisplay(day, dateClockData) {
@@ -87,6 +89,7 @@ export default class Calendar {
                 });
                 clockDataTable.appendChild(timeRow);
             });
+            
         } else {
             const noDataRow = document.createElement('tr');
             const noDataCell = document.createElement('td');
