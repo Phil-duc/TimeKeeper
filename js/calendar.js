@@ -63,6 +63,33 @@ export default class Calendar {
         return this.clockData;
     }
 
+    overrideClockInOut(date, newTimes) {
+        // Format the date as a string in the format "DD/MM/YYYY"
+        const formattedDate = this.formatDateEuropean(date);
+    
+        // Find the entry for the given date
+        let entry = this.clockData.find(entry => entry.date === formattedDate);
+    
+        // If there's no entry for the given date, create a new one
+        if (!entry) {
+            entry = { date: formattedDate, times: [] };
+            this.clockData.push(entry);
+        }
+    
+        // Override the times
+        entry.times = newTimes;
+    
+        // Update the calendar and the clockDataDisplay
+        this.updateCalendar(this.displayedWeekStart);
+    
+        // Update the clockDataDisplay for the current date
+        const day = { date: this.formatDateEuropean(date) };
+        const dateClockData = this.clockData.find(data => data.date === day.date);
+        this.updateClockDataDisplay(day, dateClockData);
+    
+        return this.clockData;
+    }
+
     updateClockDataDisplay(day, dateClockData) {
         // Create a table and populate it with the clock data
         const clockDataTable = document.createElement('table');
