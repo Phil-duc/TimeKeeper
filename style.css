@@ -102,7 +102,8 @@ td {
     font-size: 14px;
 }
 
-#clockDataDisplay {
+
+#clockDataContainer {
     margin-top: 20px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -111,11 +112,6 @@ td {
     font-family: 'Arial', sans-serif;
     font-size: 14px;
     color: #333;
-}
-
-#clockDataDisplay h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
 }
 
 #clockDataDisplay table {
@@ -135,4 +131,19 @@ td {
 
 #spacer {
     height: 200px;
+}
+
+.selected {
+    outline: 1px solid #007bff;
+    background-color: #edf6ff;
+    animation: outlineFade 750ms ease-out;
+}
+
+@keyframes outlineFade {
+    0% {
+        outline-color: #c0dfff; /* Bright red at the start */
+    }
+    100% {
+        outline-color: #007bff; /* Transition to a darker red */
+    }
 }
