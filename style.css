@@ -104,25 +104,32 @@ td {
 
 
 #clockDataContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
     margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    font-family: 'Arial', sans-serif;
-    font-size: 14px;
-    color: #333;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #clockDataDisplay table {
+    margin: 0px;
     width: 100%;
     border-collapse: collapse;
 }
 
 #clockDataDisplay th, #clockDataDisplay td {
-    border: 1px solid #ccc;
     padding: 10px;
     text-align: left;
+    
+}
+
+#clockDataDisplay tr {
+    padding: 10px;
+    text-align: left;
+    border-top-left-radius: 20px; 
+    border-top-right-radius: 20px; 
 }
 
 #clockDataDisplay .status {
@@ -146,4 +153,25 @@ td {
     100% {
         outline-color: #007bff; 
     }
+}
+
+#editClocksButton {
+    background-color: #007bff; 
+    color: #ffffff; 
+    border: none;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; 
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; 
+
+}
+
+#editClocksButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
