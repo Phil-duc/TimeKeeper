@@ -134,16 +134,16 @@ td {
 }
 
 .selected {
-    outline: 1px solid #007bff;
+    outline: 1px solid #48a0ff;
     background-color: #edf6ff;
-    animation: outlineFade 750ms ease-out;
+    animation: outlineFade 550ms linear(0, 0.3 55%, 1);
 }
 
 @keyframes outlineFade {
     0% {
-        outline-color: #c0dfff; /* Bright red at the start */
+        outline-color: #5900ff; 
     }
     100% {
-        outline-color: #007bff; /* Transition to a darker red */
+        outline-color: #007bff; 
     }
 }
