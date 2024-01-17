@@ -148,6 +148,7 @@ export default class Calendar {
     populateCalendarBody(calendarBody, weekDays) {
     weekDays.forEach(day => {
         const row = document.createElement('tr');
+        row.className = 'calendar-line';
 
          // Add a click event listener to the row
         row.addEventListener('click', () => {
@@ -240,7 +241,7 @@ export default class Calendar {
         return `${day}/${month}/${year}`;
     }
 
-    getStartOfWeek(date, startDay = 2) {
+    getStartOfWeek(date, startDay = 1) {
         const dayOfWeek = date.getDay();
         const diff = date.getDate() - dayOfWeek + (dayOfWeek === startDay ? 0 : (dayOfWeek < startDay ? -6 : 1));
         return new Date(date.setDate(diff));
