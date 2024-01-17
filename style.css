@@ -140,7 +140,7 @@ td {
 }
 
 @keyframes outlineFade {
-    0% {
+    3% {
         outline-color: #5900ff; 
     }
     100% {
