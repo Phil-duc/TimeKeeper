@@ -155,17 +155,18 @@ export default class Calendar {
             // Retrieve the clockData for this date
             const dateClockData = this.clockData.find(data => data.date === day.date);
 
-            // Create a table and populate it with the clock data
             const clockDataTable = document.createElement('table');
-            const headerRow = document.createElement('tr');
-            ['Clock In', 'Clock Out', 'Status'].forEach(header => {
-                const th = document.createElement('th');
-                th.textContent = header;
-                headerRow.appendChild(th);
-            });
-            clockDataTable.appendChild(headerRow);
 
             if (dateClockData) {
+                const headerRow = document.createElement('tr');
+                ['Clock In', 'Clock Out', 'Status'].forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header;
+                    headerRow.appendChild(th);
+                });
+                clockDataTable.appendChild(headerRow);
+
+
                 dateClockData.times.forEach(time => {
                     const timeRow = document.createElement('tr');
                     let status = 'Working';
@@ -181,12 +182,10 @@ export default class Calendar {
                     clockDataTable.appendChild(timeRow);
                 });
             } else {
-                const noDataRow = document.createElement('tr');
-                const noDataCell = document.createElement('td');
-                noDataCell.textContent = 'No data for this date.';
-                noDataCell.colSpan = 3;
-                noDataRow.appendChild(noDataCell);
-                clockDataTable.appendChild(noDataRow);
+                clockDataTable.className = 'no-data';
+
+                let textContent = 'No data for this date.';
+                clockDataTable.innerHTML = textContent;
             }
 
             // Display the clockData under the calendar
@@ -199,6 +198,7 @@ export default class Calendar {
 
 
         const dateCell = document.createElement('td');
+        dateCell.className = 'date';
         const dayNameCell = document.createElement('td');
         const timeSpentCell = document.createElement('td');
 

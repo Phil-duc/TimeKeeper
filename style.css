@@ -81,7 +81,7 @@ main {
 margin-right: 5px;
 }
 
-table {
+#calendar table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -107,10 +107,11 @@ td {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
-    margin-top: 20px;
     background-color: #fff;
-    border-radius: 8px;
+    
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px; 
 }
 
 #clockDataDisplay table {
@@ -167,11 +168,64 @@ td {
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 100%; 
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px; 
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px; 
 
 }
 
 #editClocksButton:hover {
     background-color: #0056b3; /* Darker blue on hover */
 }
+
+.no-data {
+    text-align: center;
+    margin: 20px;
+    padding: auto;
+    font-size: 1.4em;
+    color: #007bff;
+}
+
+#editDialog {
+    width: 300px;
+    padding: 20px;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#editDialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#editDialog label {
+    font-weight: bold;
+}
+
+#editDialog input[type="text"],
+#editDialog input[type="time"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#editDialog button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+#editDialog button:hover {
+    background-color: #0056b3;
+}
+
+::backdrop{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+

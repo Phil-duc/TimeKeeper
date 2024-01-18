@@ -43,18 +43,25 @@
             </table>
         </div>
         
-        <div id="clockDataDisplay">
-            <div id="clockDataDisplayTitle">Clock In/Out</div>
+        <div id="clockDataContainer">
+            <div id="clockDataDisplay">
+                <!-- Display clock in/out data will be added dynamically using JavaScript -->
+            </div>
+            <button id="editClocksButton">&#9998; edit clock data</button>
         </div>
 
         <div id="spacer"></div>
-
     </main>
 
     <button id="clockButton">Clock In/Out</button>
 
+    <dialog id="editDialog">
+        <form id="editForm">
+            <!-- The form will be populated here -->
+        </form>
+    </dialog>
+
+
     <script type="module" src="main.js"></script>
-
-
 </body>
 </html>
