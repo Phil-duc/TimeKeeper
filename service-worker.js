@@ -1,11 +1,13 @@
-const CACHE_NAME = 'time-keeper-cache-v1';
+const CACHE_NAME = 'time-keeper-cache-v2';
 
 const urlsToCache = [
   '/',
   'index.html',
-  'manifest.json',
   'style.css',
-  'icon.png'
+  'icon.png',
+  'main.js',
+  'js/calendar.js',
+  
 ];
 
 self.addEventListener('install', event => {
