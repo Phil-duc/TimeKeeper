@@ -1,14 +1,27 @@
+:root {
+    --primary-color: #007bff;
+    --primary-color-dark: #0056b3;
+    --background-color: #f4f4f4;
+    --white-color: #fff;
+    --black-color: #000;
+    --red-color: #ff0000;
+    --light-gray-color: #ccc;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f4f4f4;
+    background-color: var(--background-color);
 }
 
 header {
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white-color);
     padding: 10px;
     text-align: center;
 }
@@ -22,17 +35,17 @@ main {
     width: 100%;
     padding: 15px;
     height: 100px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white-color);
     border: none;
     cursor: pointer;
     position: fixed;
     bottom: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
 }
 
 #clockButton:hover {
-    background-color: #0056b3;
+    background-color: var(--primary-color-dark);
 }
 
 
@@ -42,9 +55,9 @@ main {
     margin: 0 auto;
     text-align: center;
     margin-top: 20px;
-    background-color: #fff;
+    background-color: var(--white-color);
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
 }
 
 .calendar-button {
@@ -95,8 +108,8 @@ th, td {
 }
 
 th {
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white-color);
 }
 
 td {
@@ -108,9 +121,9 @@ td {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
-    background-color: #fff;
+    background-color: var(--white-color);
     
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px; 
 }
@@ -135,7 +148,7 @@ td {
 }
 
 #clockDataDisplay .status {
-    color: #007bff;
+    color: var(--primary-color);
 }
 
 #spacer {
@@ -153,13 +166,13 @@ td {
         outline-color: #5900ff; 
     }
     100% {
-        outline-color: #007bff; 
+        outline-color: var(--primary-color); 
     }
 }
 
 #editClocksButton {
-    background-color: #007bff; 
-    color: #ffffff; 
+    background-color: var(--primary-color); 
+    color: var(--white-color); 
     border: none;
     padding: 12px 20px;
     text-align: center;
@@ -175,7 +188,7 @@ td {
 }
 
 #editClocksButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: var(--primary-color-dark); /* Darker blue on hover */
 }
 
 .no-data {
@@ -183,15 +196,15 @@ td {
     margin: 20px;
     padding: auto;
     font-size: 1.4em;
-    color: #007bff;
+    color: var(--primary-color);
 }
 
 #editDialog {
     width: 300px;
     padding: 20px;
     margin: auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: var(--white-color);
+    border: 1px solid var(--light-gray-color);
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -209,7 +222,7 @@ td {
 #editDialog input[type="text"],
 #editDialog input[type="time"] {
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--light-gray-color);
     border-radius: 5px;
 }
 
@@ -217,14 +230,37 @@ td {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #007BFF;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--white-color);
     cursor: pointer;
+    width: calc(50% - 10px); 
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+#editDialog button.add-button {
+    width: auto; 
+    background-color: green;
+    color: white;
+}
+
+#editDialog button.cancel-button {
+    background-color: red;
+    color: white;
+}
+
+#editDialog button.add-button:hover {
+    background-color: rgb(2, 92, 2);
+}
+
+#editDialog button.cancel-button:hover {
+    background-color: rgb(165, 2, 2);
 }
 
 #editDialog button:hover {
-    background-color: #0056b3;
+    background-color: var(--primary-color-dark);
 }
+
 
 ::backdrop{
     background-color: rgba(0, 0, 0, 0.5);
